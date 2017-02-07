@@ -23,7 +23,7 @@
     
     <div id="block-header2">
         <p align="right"><a href="administrators.php">Адміністратори</a> | <a href="?logout">ВИХІД</a></p>
-        <p align="right">Ви - 5354353452345<span></span></p>
+        <p align="right">Ви - <?php echo $_SESSION['admin_role']; ?><span></span></p>
     </div>
 </div>
 <div id="left-nav">

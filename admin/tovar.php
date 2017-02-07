@@ -59,7 +59,14 @@ if ($_SESSION['auth_admin'] == "yes_auth")
         switch ($action)
         {
             case 'delete':
-            $delete = mysql_query("DELETE FROM table_products WHERE products_id='$id'", $link);
+            if($_SESSION['delete_tovar'] == '1')
+            {
+                $delete = mysql_query("DELETE FROM table_products WHERE products_id='$id'", $link);
+            }
+            else
+            {
+               $msgerror = 'У Вас немає прав на видалення товару!!!'; 
+            }
             break;
         }
     }  
@@ -144,6 +151,8 @@ if ($_SESSION['auth_admin'] == "yes_auth")
         </div>
         <ul id="block-tovar">
             <?php
+                if(isset($msgerror)) echo '<p id="form-error" align="center">'.$msgerror.'</p>';
+                
                 $num = 9; //Кількість одиниць які виводяться на сторінку.
                 $page = (int)$_GET['page'];
                 $count = mysql_query("SELECT COUNT(*) FROM table_products $cat", $link);

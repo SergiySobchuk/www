@@ -405,6 +405,7 @@ a.pstr-prev:hover , a.pstr-next:hover{
     padding-bottom: 10px;
     padding-left: 10px;
     margin-top: 0px;
+    margin-bottom: 0px;
 }
 #form-success{
     font:  bold 14px sans-serif;

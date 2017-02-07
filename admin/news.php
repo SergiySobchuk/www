@@ -14,6 +14,8 @@ if ($_SESSION['auth_admin'] == "yes_auth")
     
     if($_POST["submit_news"])
     {
+        if($_SESSION['add_news'] == '1')
+        {
         if($_POST["news_title"] == "" || $_POST["news_text"] == "" )
         {
             $message = "<p id='form-error'>Заповніть усі поля!!!</p>";
@@ -28,6 +30,10 @@ if ($_SESSION['auth_admin'] == "yes_auth")
                             )", $link);
             $message = "<p id='form-success'>Новина додана!!!</p>";
         }
+        }else
+        {
+            $msgerror = 'У Вас немає прав на додавання новин!!!';
+        } 
     }
     
     $id =  clear_string($_GET["id"]);
@@ -37,7 +43,14 @@ if ($_SESSION['auth_admin'] == "yes_auth")
         switch ($action)
         {
             case 'delete':
-            $delete = mysql_query("DELETE FROM news WHERE id = '$id'",$link);
+                if($_SESSION['delete_news'] == '1')
+                {
+                    $delete = mysql_query("DELETE FROM news WHERE id = '$id'",$link);
+                }
+                else
+                {
+                    $msgerror = 'У Вас немає прав на додавання новин!!!';
+                } 
             break; 
         }
     }   
@@ -75,6 +88,7 @@ if ($_SESSION['auth_admin'] == "yes_auth")
             <p align="right" id="add-style"><a class="news" href="#news">Додати новину</a></p>
         </div>
         <?php
+           if(isset($msgerror)) echo '<p id="form-error" align="center">'.$msgerror.'</p>';
            if($message != "") echo $message;
 	       $result = mysql_query("SELECT * FROM news ORDER BY id DESC", $link);
            if(mysql_num_rows($result) > 0)

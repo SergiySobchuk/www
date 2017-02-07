@@ -17,18 +17,18 @@ if ($_SESSION['auth_admin'] == "yes_auth")
     switch ($sort)
     {
         case 'accept':
-        $sort = "moderat='1' DESC";
-        $sort_name = 'Перевірені';
+            $sort = "moderat='1' DESC";
+            $sort_name = 'Перевірені';
         break;
     
         case 'no-accept':
-        $sort = "moderat='0' DESC";
-        $sort_name = 'Не перевірені';
+            $sort = "moderat='0' DESC";
+            $sort_name = 'Не перевірені';
         break;
         
         default:
-        $sort = "reviews_id DESC";
-        $sort_name = 'Без сортування';
+            $sort = "reviews_id DESC";
+            $sort_name = 'Без сортування';
         break;
     }
     $action = $_GET["action"];
@@ -37,11 +37,25 @@ if ($_SESSION['auth_admin'] == "yes_auth")
         switch($action)
         {
             case 'accept':
-            $update = mysql_query("UPDATE table_reviews SET moderat='1' WHERE reviews_id = '$id'", $link);
+            if($_SESSION['accept_reviews'] == '1')
+            {
+                $update = mysql_query("UPDATE table_reviews SET moderat='1' WHERE reviews_id = '$id'", $link);
+            }
+            else
+            {
+                $msgerror = 'У Вас немає прав на підтвердження відгуків!!!';
+            }
             break;
             
             case 'delete':
-            $delete = mysql_query("DELETE FROM table_reviews WHERE reviews_id='$id'", $link);
+            if($_SESSION['delete_reviews'] == '1')
+            {
+                $delete = mysql_query("DELETE FROM table_reviews WHERE reviews_id='$id'", $link);
+            }
+            else
+            {
+                $msgerror = 'У Вас немає прав на видалення відгуків!!!';
+            }
             break;
         }
     }
@@ -91,6 +105,7 @@ if ($_SESSION['auth_admin'] == "yes_auth")
             </ul>
         </div>
             <?php
+                if(isset($msgerror)) echo '<p id="form-error" align="center">'.$msgerror.'</p>';
                 $num = 4; //Кількість одиниць які виводяться на сторінку.
                 $page = (int)$_GET['page'];
                 $count = mysql_query("SELECT COUNT(*) FROM table_reviews", $link);

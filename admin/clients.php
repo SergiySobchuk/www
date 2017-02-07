@@ -18,7 +18,14 @@ if ($_SESSION['auth_admin'] == "yes_auth")
         switch ($action)
         {
             case 'delete':
-            $delete = mysql_query("DELETE FROM reg_user WHERE id = '$id'",$link);
+                if($_SESSION['delete_clients'] == '1')
+                    {
+                $delete = mysql_query("DELETE FROM reg_user WHERE id = '$id'",$link);
+                }
+                else
+                {
+                    $msgerror = 'У Вас немає прав на видалення  клієнтів!!!';
+                }      
             break; 
         }
     }   
@@ -47,6 +54,9 @@ if ($_SESSION['auth_admin'] == "yes_auth")
             <p id="count-client">Клієнти - <strong><?php echo $result_count; ?></strong></p>
         </div>
         <?php
+        if(isset($msgerror)) echo '<p id="form-error" align="center">'.$msgerror.'</p>';
+        if($_SESSION['view_clients'] == '1')
+        {
                 $num = 3; //Кількість одиниць які виводяться на сторінку.
                 $page = (int)$_GET['page'];
                 $count = mysql_query("SELECT COUNT(*) FROM reg_user ", $link);
@@ -125,6 +135,14 @@ if ($_SESSION['auth_admin'] == "yes_auth")
                     ';
                 }
 
+        }
+        else
+         {
+            echo 
+            '
+                <p id="form-error" align="center">У Вас немає прав на перегляд бази клієнтів!!!</p>
+            ';
+         }
         ?>
     </div>
     </div>

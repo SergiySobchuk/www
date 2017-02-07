@@ -11,28 +11,33 @@ if ($_SESSION['auth_admin'] == "yes_auth")
    	$_SESSION['urlpage'] = "<a href='index.php'>Головна</a> \ <a href='category.php'>Категорії</a>";
     include("include/db_connect.php");
     include("include/functions.php");
+    
     if($_POST["submit_cat"])
     {
-        $error = array();
-        if(!$_POST["cat_type"]) $error[] = "Вкажіть тип товара!";
-        if(!$_POST["cat_brand"]) $error[] = "Вкажіть бренд товара!";
-        
-        if(count($error))
+        if($_SESSION['add_category'] == '1')
         {
-            $_SESSION['message'] = "<p id='form-error'>".implode("<br/>",$error)."</p>";
+            $error = array();
+            if(!$_POST["cat_type"]) $error[] = "Вкажіть тип товара!";
+            if(!$_POST["cat_brand"]) $error[] = "Вкажіть бренд товара!";
+        
+            if(count($error))
+            {
+                $_SESSION['message'] = "<p id='form-error'>".implode("<br/>",$error)."</p>";
+            }
+            else
+            {
+                $cat_type = clear_string($_POST["cat_type"]);
+                $cat_brand =  clear_string($_POST["cat_brand"]);
+            
+                mysql_query("INSERT INTO category (type,brand) VALUES ('".$cat_type."', '".$cat_brand."')", $link);  
+                $_SESSION['message'] = "<p id='form-success'>Категорія &quot; ".$cat_type." - ".$cat_brand." &quot; успішно додана!</p>";
+            }
         }
         else
         {
-            $cat_type = clear_string($_POST["cat_type"]);
-            $cat_brand =  clear_string($_POST["cat_brand"]);
-            
-            mysql_query("INSERT INTO category (type,brand) VALUES ('".$cat_type."', '".$cat_brand."')", $link);  
-            $_SESSION['message'] = "<p id='form-success'>Категорія &quot; ".$cat_type." - ".$cat_brand." &quot; успішно додана!</p>";
+            $msgerror = 'У Вас немає прав на додавання категорій!!!';
         }
     }
-    
-    
-    
         
 ?>
 <!DOCTYPE HTML>
@@ -55,6 +60,8 @@ if ($_SESSION['auth_admin'] == "yes_auth")
             <p id="title-page"><strong>Категорії</strong></p>
         </div>
         <?php
+            if(isset($msgerror)) echo '<p id="form-error" align="center">'.$msgerror.'</p>';
+        
             if(isset($_SESSION['message']))
             {
                 echo $_SESSION['message'];
@@ -66,7 +73,12 @@ if ($_SESSION['auth_admin'] == "yes_auth")
                 <li>
                     <label>Категорії</label>
                     <div>
-                        <a class="delete-cat">Видалити</a>
+                        <?php
+                            if($_SESSION['delete_category'] == '1')
+                            {
+                                echo'<a class="delete-cat">Видалити</a>';
+                            }
+                        ?>
                     </div>
                     <select name="cat_type" id="cat_type" size="10">
                     <?php

@@ -14,6 +14,8 @@ if ($_SESSION['auth_admin'] == "yes_auth")
     
     if ($_POST["submit_add"])
     {
+    if ($_SESSION['add_tovar'] == '1')
+    {
         $error = array();
         if(!$_POST["form_title"])
         {
@@ -93,6 +95,11 @@ if ($_SESSION['auth_admin'] == "yes_auth")
             }
         }
     }
+    else
+    {
+        $msgerror = 'У Вас немає прав на додавання товару!!!'; 
+    }
+    }
     
 ?>
 <!DOCTYPE HTML>
@@ -119,6 +126,9 @@ if ($_SESSION['auth_admin'] == "yes_auth")
         </div>
         
 <?php
+
+    if(isset($msgerror)) echo '<p id="form-error" align="center">'.$msgerror.'</p>';
+
     if(isset($_SESSION['message']))
     {
         echo $_SESSION['message'];

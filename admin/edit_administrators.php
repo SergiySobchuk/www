@@ -15,6 +15,8 @@ if ($_SESSION['auth_admin'] == "yes_auth")
     
     if($_POST["submit_edit"])
     {
+    if($_SESSION['auth_admin_login'] == 'admin')
+    {
         $error = array();
         if($_POST["admin_pass"]) 
         {
@@ -38,6 +40,11 @@ if ($_SESSION['auth_admin'] == "yes_auth")
             
             $_SESSION['message'] = "<p id='form-success'>Адміністратора успішно редаговано!</p>";
         }
+    }
+    else
+    {
+        $msgerror = 'У Вас немає прав на редагування адміністраторів!!!';
+    }
     }
     
 ?>
@@ -63,6 +70,7 @@ if ($_SESSION['auth_admin'] == "yes_auth")
             <p id="title-page"><strong>Редагування адміністратора</strong></p>
         </div>
         <?php
+           if(isset($msgerror)) echo '<p id="form-error" align="center">'.$msgerror.'</p>'; 
 	       if(isset($_SESSION['message']))
            {
                 echo $_SESSION['message'];

@@ -14,6 +14,8 @@ if ($_SESSION['auth_admin'] == "yes_auth")
     
     if($_POST["submit_add"])
     {
+    if($_SESSION['auth_admin_login'] == 'admin')
+    {    
         $error = array();
         if($_POST["admin_login"])
         {
@@ -73,6 +75,11 @@ if ($_SESSION['auth_admin'] == "yes_auth")
             $_SESSION['message'] = "<p id='form-success'>Адміністратор &quot;".$_POST['admin_login']."&quot; успішно додано!</p>";
         }
     }
+    else
+    {
+        $msgerror = 'У Вас немає прав на додавання адміністраторів!!!';
+    }
+    }
     
 ?>
 <!DOCTYPE HTML>
@@ -97,6 +104,7 @@ if ($_SESSION['auth_admin'] == "yes_auth")
             <p id="title-page"><strong>Додавання адміністраторів</strong></p>
         </div>
         <?php
+           if(isset($msgerror)) echo '<p id="form-error" align="center">'.$msgerror.'</p>'; 
 	       if(isset($_SESSION['message']))
            {
                 echo $_SESSION['message'];

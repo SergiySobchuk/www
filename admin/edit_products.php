@@ -20,16 +20,25 @@ if ($_SESSION['auth_admin'] == "yes_auth")
         switch($action)
         {
             case 'delete':
+            if ($_SESSION['edit_tovar'] == '1')
+            {
                 if (file_exists("../uploads_images/".$_GET["img"]))
                 {
                     unlink("../uploads_images/".$_GET["img"]);
                     $delete = mysql_query("UPDATE table_products SET image='' WHERE products_id='$id'", $link);
                 }
-                break;
+            }
+            else
+            {
+                $msgerror = 'У Вас немає прав на редагування товару!!!'; 
+            }
+            break;
         }
     }
 
     if ($_POST["submit_save"])
+    {
+    if ($_SESSION['edit_tovar'] == '1')
     {
         $error = array();
         if(!$_POST["form_title"])
@@ -102,6 +111,11 @@ if ($_SESSION['auth_admin'] == "yes_auth")
             $_SESSION['message'] = "<p id='form-success'>Товар &quot;".$_POST['form_title']."&quot; успішно змінено!!!</p>";
         }
     }
+    else
+    {
+        $msgerror = 'У Вас немає прав на редагування товару!!!'; 
+    }
+    }
 
 ?>
 <!DOCTYPE HTML>
@@ -128,6 +142,8 @@ if ($_SESSION['auth_admin'] == "yes_auth")
         </div>
 
 <?php
+    if(isset($msgerror)) echo '<p id="form-error" align="center">'.$msgerror.'</p>';
+
     if(isset($_SESSION['message']))
     {
         echo $_SESSION['message'];
@@ -331,7 +347,13 @@ if ($_SESSION['auth_admin'] == "yes_auth")
                     '
                         <li id="del'.$result_img["id"].'">
                             <img src="'.$img_path.'" width = "'.$width.'" height = "'.$height.'" title = "'.$result_img["image"].'"/>
-                            <a class="del-img" img_id="'.$result_img["id"].'"></a>
+                    ';
+                            if ($_SESSION['edit_tovar'] == '1')
+                            {
+                                echo '<a class="del-img" img_id="'.$result_img["id"].'"></a>';
+                            }
+                    echo 
+                    '
                         </li>
                     ';
                 }while($result_img = mysql_fetch_array($query_img));

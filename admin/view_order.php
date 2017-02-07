@@ -20,17 +20,38 @@ if ($_SESSION['auth_admin'] == "yes_auth")
         switch ($action)
         {
             case 'accept':
-                $update = mysql_query("UPDATE orders SET order_confirmed='yes' WHERE order_id='$id'", $link);
+                if ($_SESSION['accept_orders'] == '1')
+                {
+                    $update = mysql_query("UPDATE orders SET order_confirmed='yes' WHERE order_id='$id'", $link);
+                }
+                else
+                {
+                  $msgerror = 'У Вас немає прав на підтвердження замовлення!!!';
+                };
             break;
             
             case 'no-accept':
-                $update = mysql_query("UPDATE orders SET order_confirmed='no' WHERE order_id='$id'", $link);
+                if ($_SESSION['accept_orders'] == '1')
+                {
+                    $update = mysql_query("UPDATE orders SET order_confirmed='no' WHERE order_id='$id'", $link);
+                }
+                else
+                {
+                  $msgerror = 'У Вас немає прав на зміну статусу замовлення!!!';
+                };
             break;
             
             case 'delete':
-                $delete = mysql_query("DELETE FROM orders WHERE order_id='$id'",$link);
-                $delete1 = mysql_query("DELETE FROM buy_products WHERE buy_id_order='$id'",$link);
-                header("Location: orders.php");
+                if($_SESSION['delete_orders'] == '1')
+                {
+                    $delete = mysql_query("DELETE FROM orders WHERE order_id='$id'",$link);
+                    $delete1 = mysql_query("DELETE FROM buy_products WHERE buy_id_order='$id'",$link);
+                    header("Location: orders.php");
+                }
+                else
+                {
+                    $msgerror = 'У Вас немає прав на видалення замовлення!!!';
+                } 
             break;
         }
     }
@@ -62,6 +83,11 @@ if ($_SESSION['auth_admin'] == "yes_auth")
             <p id="title-page"><strong>Перегляд замовлення</strong></p>
         </div>
         <?php
+        if(isset($msgerror)) echo '<p id="form-error" align="center">'.$msgerror.'</p>';
+        
+        if($_SESSION['view_orders'] =='1')
+        {
+        
 	       $result = mysql_query("SELECT * FROM orders WHERE order_id = '$id'", $link); 
            if (mysql_num_rows($result) > 0)
                     {
@@ -147,6 +173,14 @@ if ($_SESSION['auth_admin'] == "yes_auth")
                         }
                         while($row = mysql_fetch_array($result));
                     }
+         }
+         else
+         {
+            echo 
+            '
+                <p id="form-error" align="center">У Вас немає прав на перегляд даного розділу!!!</p>
+            ';
+         }
         ?>
     </div>
     </div>

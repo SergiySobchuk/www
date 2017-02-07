@@ -35,7 +35,7 @@ if ($_SESSION['auth_admin'] == "yes_auth")
     $result3 = mysql_num_rows($query3);
     
     $query4 = mysql_query("SELECT * FROM reg_user", $link);
-    $result = mysql_num_rows($query4);
+    $result4 = mysql_num_rows($query4);
 ?>
     <div id="block-content">
         <div id="block-parameters">

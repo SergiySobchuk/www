@@ -21,6 +21,34 @@
             {
                 $row = mysql_fetch_array($result);
                 $_SESSION['auth_admin'] = 'yes_auth'; 
+                $_SESSION['auth_admin_login'] = $row["login"];
+                //Посада
+                $_SESSION['admin_role'] = $row["role"];
+              
+              //Привілегії  
+                //Закази
+                $_SESSION['accept_orders'] = $row["accept_orders"];
+                $_SESSION['delete_orders'] = $row["delete_orders"];
+                $_SESSION['view_orders'] = $row["view_orders"];
+                //Товари
+                $_SESSION['add_tovar'] = $row["add_tovar"];
+                $_SESSION['edit_tovar'] = $row["edit_tovar"];
+                $_SESSION['delete_tovar'] = $row["delete_tovar"];
+                //Відгуки
+                $_SESSION['accept_reviews'] = $row["accept_reviews"];
+                $_SESSION['delete_reviews'] = $row["delete_reviews"];
+                //Клієнти
+                $_SESSION['view_clients'] = $row["view_clients"];
+                $_SESSION['delete_clients'] = $row["delete_clients"];
+                //Новини
+                $_SESSION['add_news'] = $row["add_news"];
+                $_SESSION['delete_news'] = $row["delete_news"];
+                //Категорії
+                $_SESSION['add_category'] = $row["add_category"];
+                $_SESSION['delete_category'] = $row["delete_category"];
+                //Перегляд адмінів
+                $_SESSION['view_admin'] = $row["view_admin"];
+                                
                 header("Location: index.php");
             }
             else

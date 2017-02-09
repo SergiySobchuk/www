@@ -383,7 +383,22 @@
                         }
                         echo '
                             <h2 class="itog-price" align="right">Разом: <strong>'.$itogpricecart.'</strong> грн.</h2>
-                            <p align="right" class="button-next" ><a href="" >Оплатити</a></p> 
+                            
+                            <form method="post" action="https://wl.walletone.com/checkout/checkout/Index" accept-charset="UTF-8">
+                                <input type="hidden" name="WMI_MERCHANT_ID"    value="176679885394"/>
+                                <input type="hidden" name="WMI_PAYMENT_AMOUNT" value="1"/>
+                                <input type="hidden" name="WMI_CURRENCY_ID"    value="980"/>
+                                <input type="hidden" name="WMI_PAYMENT_NO"     value="'.$_SESSION["order_id"].'"/>
+                                <input type="hidden" name="WMI_DESCRIPTION"    value="Оплата демонстраційного замовлення"/>
+                                <input type="hidden" name="WMI_PTENABLED"      value="WalletOneUAH"/>
+                                <input type="hidden" name="WMI_PTENABLED"      value="LiqPayMoneyUAH"/>
+                                <input type="hidden" name="WMI_PTENABLED"      value="PrivatbankUAH"/>
+                                <input type="hidden" name="WMI_PTENABLED"      value="WebMoneyUAH"/>
+                                <input type="hidden" name="WMI_PTENABLED"      value="CreditCardUAH"/>
+                                <input type="hidden" name="WMI_SUCCESS_URL"    value="http://it-shop.zzz.com.ua/paid.php"/>
+                                <input type="hidden" name="WMI_FAIL_URL"       value="http://it-shop.zzz.com.ua/fail.php"/>
+                                <p align="right"><input type="submit" name="submitdata" id="confirm-button-next" value="Оплатити"></p> 
+                            </form>        
                         ';
                     break;
                     

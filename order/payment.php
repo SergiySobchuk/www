@@ -3,7 +3,7 @@
     {
         define('myeshop', true);
         include("../include/db_connect.php");
-        include("../functions/clear_string.php");
+        include("../functions/functions.php"); 
         
         $id_order = clear_string($_POST["WMI_PAYMENT_NO"]);
         $status_pay = strtolower(clear_string($_POST["WMI_ORDER_STATE"]));

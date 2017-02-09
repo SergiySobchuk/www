@@ -1746,13 +1746,27 @@ div.tabs_content > div{
 #feedback textarea:focus{
     border: 1px solid #C4E1EB;
 }
-
-
-
-
-
-
-
+#pay_buttom{
+    position: absolute;
+    margin-left: 700px;
+    background: url(/images/grd-next.png);
+    border: 1px solid #B0c181;
+    font: 15px sans-serif;
+    color: white; 
+    border-radius: 6px;
+    -webkit-border-radius: 6px;
+    -moz-border-radius: 6px; 
+    padding-left: 18px;
+    padding-right: 18px;
+    padding-top: 6px;
+    padding-bottom: 6px;
+    cursor: pointer;
+}
+#after-pay-info{
+    text-align: center;
+    font: 18px sans-serif;
+    color: red;
+}
 
 
 

@@ -28,15 +28,15 @@
                     }
                     else
                     {
-                        $img_path = "/images/no-image-65.png";
+                        $img_path = "./images/no-image-65.png";
                         $width = 65;
                         $height = 118;
                     }
                     echo
                     '
                         <li>
-                            <img src="'.$img_path.'" width= "'.$width.'" height ="'.$height.'" />
-                            <a class="random-title" href="view_content.php?id='.$res_query["products_id"].'">'.$res_query["title"].'</a>
+                            <img src="http://shop/'.$img_path.'" width= "'.$width.'" height ="'.$height.'" />
+                            <a class="random-title" href="http://shop/goods/'.$res_query["products_id"].'-'.ftranslite($res_query["title"]).'">'.$res_query["title"].'</a>
                             <p class="random-reviews">Відгуки '.$count_reviews.'<p/>
                             <p class="random-price">'.group_numerals($res_query["price"]).'<p/>
                             <a class="random-add-cart" tid="'.$res_query["products_id"].'"></a>

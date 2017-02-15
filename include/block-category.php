@@ -7,7 +7,7 @@
         <li><a id="index1"><img src="/images/mobile-icon.gif" id="mobile-images"/>Мобільні телефони</a>
             <ul type="none" class="category-section">
                 <li>
-                    <a href="view_cat.php?type=mobile"><strong>Всі моделі</strong></a>                
+                    <a href="http://shop/cat/mobile"><strong>Всі моделі</strong></a>                
                 </li>
             
             <?php
@@ -19,7 +19,7 @@
                         {
                             echo'
                                                     
-                            <li><a href="view_cat.php?cat='.strtolower($row["brand"]).'&type='.$row["type"].'">'.$row["brand"].'</a></li>
+                            <li><a href="http://shop/cat/'.strtolower($row["brand"]).'--'.$row["type"].'">'.$row["brand"].'</a></li>
                             
                             ';    
                         }
@@ -35,7 +35,7 @@
         <li><a id="index2"><img src="/images/book-icon.gif" id="book-images"/>Ноутбуки</a>
             <ul type="none" class="category-section">
                 <li>
-                    <a href="view_cat.php?type=notebook"><strong>Всі моделі</strong></a>                
+                    <a href="http://shop/cat/notebook"><strong>Всі моделі</strong></a>                
 
             <?php
 	               $result = mysql_query("SELECT * FROM category WHERE type='notebook'",$link);
@@ -46,7 +46,7 @@
                         {
                             echo'
                                                     
-                            <li><a href="view_cat.php?cat='.strtolower($row["brand"]).'&type='.$row["type"].'">'.$row["brand"].'</a></li>
+                            <li><a href="http://shop/cat/'.strtolower($row["brand"]).'--'.$row["type"].'">'.$row["brand"].'</a></li>
                             
                             ';    
                         }
@@ -62,7 +62,7 @@
         <li><a id="index3"><img src="/images/table-icon.gif" id="table-images"/>Планшети</a>
             <ul type="none" class="category-section">
                 <li>
-                    <a href="view_cat.php?type=notepad"><strong>Всі моделі</strong></a>                
+                    <a href="http://shop/cat/notepad"><strong>Всі моделі</strong></a>                
                 </li>
             <?php
 	               $result = mysql_query("SELECT * FROM category WHERE type='notepad'",$link);
@@ -73,7 +73,7 @@
                         {
                             echo'
                                                     
-                            <li><a href="view_cat.php?cat='.strtolower($row["brand"]).'&type='.$row["type"].'">'.$row["brand"].'</a></li>
+                            <li><a href="http://shop/cat/'.strtolower($row["brand"]).'--'.$row["type"].'">'.$row["brand"].'</a></li>
                             
                             ';    
                         }

@@ -9,19 +9,38 @@
         <!--Список з навігацією-->
         <ul type="none" id="heder-top-menu">
             <li>Ваше місто - <span>Львів</span></li>
-            <li><a href="pro-nas.php">Про нас</a></li>
-            <li><a href="magaziny.php">Магазини</a></li>
-            <li><a href="feedback.php">Контакти</a></li>
+            <li><a href="#">Про нас</a></li>
+            <li><a href="#">Магазини</a></li>
+            <li><a href="http://shop/feedback/">Зворотній звязок</a></li>
         </ul>
         <!--Вхід і регістрація-->
         <?php
+            $s = file_get_contents('http://ulogin.ru/token.php?token=' . $_POST['token'] . '&host=' . $_SERVER['HTTP_HOST']);
+            $user = json_decode($s, true);
+            //$user['network'] - соц. сеть, через которую авторизовался пользователь
+            //$user['identity'] - уникальная строка определяющая конкретного пользователя соц. сети
+            //$user['first_name'] - имя пользователя
+            //$user['last_name'] - фамилия пользователя
+            if (strlen($user['network']) > 0)
+            {
+               $_SESSION['auth'] == 'yes_auth';
+               $_SESSION['auth_name'] == $user['first_name'];
+            }        
+                
+
             if ($_SESSION['auth'] == 'yes_auth')
             {
                 echo '<p id="auth-user-info" align="right"><img src="/images/user.png" />Привіт, '.$_SESSION['auth_name'].'!</p>';   
             }
             else
             {
-                echo '<p id="reg-auth-title" align="right"><a class="top-auth">Вхід</a><a href="registration.php">Регістрація</a></p>';   
+                echo 
+                '
+                    <p id="reg-auth-title" align="right"><a class="top-auth">Вхід</a><a href="http://shop/registration/">Регістрація</a></p>
+                    <span id="soc-mer">Регістрація через соц. мережі:</span>
+                    <script src="//ulogin.ru/js/ulogin.js"></script>
+                    <div id="uLogin" data-ulogin="display=small;theme=classic;fields=first_name,last_name;providers=vkontakte,odnoklassniki,mailru,facebook;hidden=other;redirect_uri=http%3A%2F%2Fit-shop.zzz.com.ua%2Fblock-header.php;mobilebuttons=0;"></div>                
+                ';   
             }
         ?>
         <div id="block-top-auth">
@@ -57,7 +76,7 @@
     <div id="block-user">
         <div class="corner2"></div>
         <ul type="none">
-            <li><img src="/images/user_info.png"/><a href="profile.php">Профіль</a></li>
+            <li><img src="/images/user_info.png"/><a href="http://shop/profile/">Профіль</a></li>
             <li><img src="/images/logout.png" /><a id="logout">Вихід</a></li>
         </ul>
     </div>
@@ -77,7 +96,7 @@
     </div>
     <!--Пошук-->
     <div id="block-search">
-        <form method="GET" action="search.php?q=">
+        <form method="GET" action="http://shop/search.php?q=">
             <span></span>
             <input type="text" id="input-search" name="q" placeholder="Пошук серед більше 100 000 товарів" value="<?php echo $search ?>"/>
             <input type="submit" id="buttom-search" value="Пошук"/>
@@ -90,11 +109,11 @@
 <!--Верхнє меню-->
 <div id="top-menu">
     <ul type="none">
-        <li><img src="/images/shop.png" /><a href="index.php">Головна</a></li>
-        <li><img src="/images/new-32.png" /><a href="view_aystopper.php?go=news">Новинки</a></li>
-        <li><img src="/images/bestprice-32.png" /><a href="view_aystopper.php?go=leaders">Лідери продаж</a></li>
-        <li><img src="/images/sale-32.png" /><a href="view_aystopper.php?go=sale">Розпродажі</a></li>
+        <li><img src="/images/shop.png" /><a href="http://shop/index/">Головна</a></li>
+        <li><img src="/images/new-32.png" /><a href="http://shop/index/news">Новинки</a></li>
+        <li><img src="/images/bestprice-32.png" /><a href="http://shop/index/leaders">Лідери продаж</a></li>
+        <li><img src="/images/sale-32.png" /><a href="http://shop/index/sale">Розпродажі</a></li>
     </ul>
-    <p align="right" id="block-basket"><img src="/images/cart-icon.png"/><a href="cart.php?action=oneclick">Кошик пустий</a></p>
+    <p align="right" id="block-basket"><img src="/images/cart-icon.png"/><a href="http://shop/cart/oneclick">Кошик пустий</a></p>
     <div id="nav-line"></div>
 </div>

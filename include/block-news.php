@@ -17,7 +17,7 @@
                         '
                             <li>
                                 <span>'.$row["date"].'</span>
-                                <a href="">'.$row["title"].'</a>
+                                <a>'.$row["title"].'</a>
                                 <p>'.$row["text"].'</p>
                             </li>
                         ';   

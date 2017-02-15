@@ -11,24 +11,24 @@ $(document).ready(function(){
             width : 160,
             leftLimit : 1,
             leftValue : <?php
-                            if((int)$_GET["start_price"] >= 1 AND (int)$_GET["start_price"] <= 8000)
+                            if((int)$_GET["start_price"] >= 1 AND (int)$_GET["start_price"] <= 12000)
                             {
                                 echo (int)$_GET["start_price"];
                             }
                             else
                             {
-                                echo "1";    
+                                echo "3000";    
                             }
                         ?>,
-            rightLimit: 8000,
+            rightLimit: 12000,
             rightValue: <?php
-                            if((int)$_GET["end_price"] >= 1 AND (int)$_GET["end_price"] <= 8000)
+                            if((int)$_GET["end_price"] >= 1 AND (int)$_GET["end_price"] <= 12000)
                             {
                                 echo (int)$_GET["end_price"];
                             }
                             else
                             {
-                                echo "5000";
+                                echo "8000";
                             }
                         ?>,
             roundUp : 1
@@ -39,7 +39,7 @@ $(document).ready(function(){
 <div id="block-parametr">
     <p class="heder-title">Пошук по параметрах</p>
     <p class="title-filter">Ціна</p>
-    <form method="GET" action="search_filter.php">
+    <form method="GET" action="http://shop/search_filter/">
         <div id="block-input-price">
             <ul type="none">
                 <li><p>від</p></li>

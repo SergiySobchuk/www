@@ -35,19 +35,19 @@
 	<meta name="Description" content="<? echo $resquery["seo_description"]; ?>" />
 	<meta name="keywords" content="<? echo $resquery["seo_words"]; ?>" />
 
-    <link href="css/reset.css" rel="stylesheet" type="text/css" />
-    <link href="css/style.css" rel="stylesheet" type="text/css" />
-    <link href="trackbar/trackbar.css" rel="stylesheet" type="text/css" />
-    <script type="text/javascript" src="/js/jquery-1.8.2.min.js"></script>
-    <script type="text/javascript" src="/js/jcarousellite_1.0.1.js"></script>
-    <script type="text/javascript" src="/js/shop-script.js"></script>
-    <script type="text/javascript" src="/js/jquery.cookie.min.js"></script>
-    <script type="text/javascript" src="/trackbar/jquery.trackbar.js"></script>
-    <script type="text/javascript" src="/js/TextChange.js"></script>
-    <script type="text/javascript" src="/js/jTabs.js"></script>
+    <link href="http://shop/css/reset.css" rel="stylesheet" type="text/css" />
+    <link href="http://shop/css/style.css" rel="stylesheet" type="text/css" />
+    <link href="http://shop/trackbar/trackbar.css" rel="stylesheet" type="text/css" />
+    <script type="text/javascript" src="http://shop/js/jquery-1.8.2.min.js"></script>
+    <script type="text/javascript" src="http://shop/js/jcarousellite_1.0.1.js"></script>
+    <script type="text/javascript" src="http://shop/js/shop-script.js"></script>
+    <script type="text/javascript" src="http://shop/js/jquery.cookie.min.js"></script>
+    <script type="text/javascript" src="http://shop/trackbar/jquery.trackbar.js"></script>
+    <script type="text/javascript" src="http://shop/js/TextChange.js"></script>
+    <script type="text/javascript" src="http://shop/js/jTabs.js"></script>
     
-    <link href="fancybox/jquery.fancybox.css"  rel="stylesheet" type="text/css" />
-    <script type="text/javascript" src="/fancybox/jquery.fancybox.js"></script>
+    <link href="http://shop/fancybox/jquery.fancybox.css"  rel="stylesheet" type="text/css" />
+    <script type="text/javascript" src="http://shop/fancybox/jquery.fancybox.js"></script>
     
     <script type="text/javascript">
         $(document).ready(function(){
@@ -94,7 +94,7 @@
                         }
                         else
                         {
-                            $img_path = "/images/no-image.png";
+                            $img_path = "./images/no-image.png";
                             $width = 110;
                             $height = 200;
                         }
@@ -108,14 +108,14 @@
                         
                         echo '
                             <div id="block-breadcrumbs-and-rating">
-                                <p id="nav-breadcrumbs"><a href="view_cat.php?type='.$row1["type_tovara"].'">'.$type_tovara.'</a> \ <span>'.$row1["brand"].'</span></p>
+                                <p id="nav-breadcrumbs"><a href="http://shop/cat/'.$row1["type_tovara"].'">'.$type_tovara.'</a> \ <span>'.$row1["brand"].'</span></p>
                                 <div id="block-like">
                                     <p id="likegood" tid="'.$id.'">Подобається</p>
                                     <p id="likegoodcount">'.$row1["yes_like"].'</p>
                                 </div>
                             </div>
                             <div id="block-content-info">
-                                <img src="'.$img_path.'" width='.$width.' height='.$height.' />
+                                <img src="http://shop/'.$img_path.'" width='.$width.' height='.$height.' />
                                 <div id="block-mini-description">
                                     <p id="content-title">'.$row1["title"].'</p>
                                     <ul class="reviews-and-counts-content" type="none">
@@ -166,9 +166,9 @@
                         echo
                         '   
                                 <li>
-                                    <a class="image-modal" href="#image'.$row["id"].'"><img src="'.$img_path.'" width="'.$width.'" height="'.$height.'" /></a>
+                                    <a class="image-modal" href="#image'.$row["id"].'"><img src="http://shop'.$img_path.'" width="'.$width.'" height="'.$height.'" /></a>
                                 </li>
-                                <a style="display:none;" class="image-modal" rel="group" id="image'.$row["id"].'""><img src="./uploads_images/'.$row["image"].'"></a> 
+                                <a style="display:none;" class="image-modal" rel="group" id="image'.$row["id"].'""><img src="http://shop/uploads_images/'.$row["image"].'"></a> 
                         
                         ';
                         }

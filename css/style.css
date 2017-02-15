@@ -140,6 +140,7 @@
     border: 1px solid #E1E1E2;
     background: url(/images/grd-button-search-norm.png);
     margin-left: -5px;
+    padding-top: 2px;
     cursor: pointer;
 }
 #block-search input#buttom-search:hover{
@@ -436,11 +437,8 @@
     margin-top: 5px;
 }
 #nav-breadcrumbs a{
-    font: 16px sans-serif;
-    color: #4268B1;
-}
-#nav-breadcrumbs a:hover{
-    color: #E20000; 
+    color: #7F868E;
+    font: 14px sans-serif
 }
 #nav-breadcrumbs span{
     color: #7F868E;
@@ -1413,11 +1411,8 @@
     margin-top: -5px;
 }
 #nav-breadcrumbs > a{
-    font: 13px sans-serif;
-    color: #4268B1;
-}
-#nav-breadcrumbs > a:hover{
-    color: #FFA1A1;
+    color: #7F868E;
+    font: 14px sans-serif
 }
 #nav-breadcrumbs > span{
     font: 14px sans-serif;
@@ -1767,9 +1762,23 @@ div.tabs_content > div{
     font: 18px sans-serif;
     color: red;
 }
-
-
-
+#uLogin{
+    position: absolute;
+    margin-left: 550px;
+    margin-top: -15px;
+    float: right;
+}
+#soc-mer{
+    position: absolute;
+    padding: 10px;
+    margin-left: 210px;
+    margin-top: 7px;
+    font: 8px sans-serif;
+}
+#not-search{
+    font: 18px sans-serif;
+    color: red;
+}
 
 
 

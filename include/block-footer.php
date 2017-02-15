@@ -38,8 +38,8 @@
         <p>Навігація</p>
         <ul type="none">
             <li>
-                <a href="index.php">Головна сторінка</a><br />
-                <a href="">Зворотній звязок</a>
+                <a href="http://shop/index/">Головна сторінка</a><br />
+                <a href="http://shop/feedback/">Зворотній звязок</a>
             </li>
         </ul>
          <p>Розповісти про сайт</p>

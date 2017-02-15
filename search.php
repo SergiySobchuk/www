@@ -45,15 +45,15 @@
 <html>
 <head>
 	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
-    <link href="css/reset.css" rel="stylesheet" type="text/css" />
-    <link href="css/style.css" rel="stylesheet" type="text/css" />
-    <link href="trackbar/trackbar.css" rel="stylesheet" type="text/css" />
-    <script type="text/javascript" src="/js/jquery-1.8.2.min.js"></script>
-    <script type="text/javascript" src="/js/jcarousellite_1.0.1.js"></script>
-    <script type="text/javascript" src="/js/shop-script.js"></script>
-    <script type="text/javascript" src="/js/jquery.cookie.min.js"></script>
-    <script type="text/javascript" src="/trackbar/jquery.trackbar.js"></script>
-    <script type="text/javascript" src="/js/TextChange.js"></script>
+    <link href="http://shop/css/reset.css" rel="stylesheet" type="text/css" />
+    <link href="http://shop/css/style.css" rel="stylesheet" type="text/css" />
+    <link href="http://shop/trackbar/trackbar.css" rel="stylesheet" type="text/css" />
+    <script type="text/javascript" src="http://shop/js/jquery-1.8.2.min.js"></script>
+    <script type="text/javascript" src="http://shop/js/jcarousellite_1.0.1.js"></script>
+    <script type="text/javascript" src="http://shop/js/shop-script.js"></script>
+    <script type="text/javascript" src="http://shop/js/jquery.cookie.min.js"></script>
+    <script type="text/javascript" src="http://shop/trackbar/jquery.trackbar.js"></script>
+    <script type="text/javascript" src="http://shop/js/TextChange.js"></script>
 	<title>Пошук - <?php echo $search; ?></title> 
 </head>
 <body>
@@ -150,9 +150,9 @@
                         echo'
                                 <li>
                                     <div class="block-images-grid">
-                                        <img src="'.$img_path.'" width="'.$width.'" height = ".$height." />
+                                        <img src="http://shop/'.$img_path.'" width="'.$width.'" height = ".$height." />
                                     </div>
-                                    <p class="style-title-grid"><a href="view_content.php?id='.$row["products_id"].'">'.$row["title"].'</a></p>
+                                    <p class="style-title-grid"><a href="http://shop/goods/'.$row["products_id"].'-'.ftranslite($row["title"]).'">'.$row["title"].'</a></p>
                                     <ul class="reviews-and-counts-grid" type="none">
                                         <li>
                                             <img src="/images/eye-icon.png"/>
@@ -207,7 +207,7 @@
                         echo'
                                 <li>
                                     <div class="block-images-list">
-                                        <img src="'.$img_path.'" width="'.$width.'" height = ".$height." />
+                                        <img src="http://shop/'.$img_path.'" width="'.$width.'" height = ".$height." />
                                     </div>
                                     
                                     <ul class="reviews-and-counts-list" type="none">
@@ -220,7 +220,7 @@
                                             <p>0</p>
                                         </li>
                                     </ul>
-                                    <p class="style-title-list"><a href="view_content.php?id='.$row["products_id"].'">'.$row["title"].'</a></p>
+                                    <p class="style-title-list"><a href="http://shop/goods/'.$row["products_id"].'">'.$row["title"].'</a></p>
                                     <a class="add-cart-style-list" tid = "'.$row["products_id"].'"></a>
                                     <p class="style-price-list"><strong>'.$row["price"].'</strong> грн.</p>
                                     <div class="style-text-list">
@@ -271,7 +271,7 @@ echo '</ul>';
                          </div>
                     ';
                 }
-               } else echo '<p>Нічого не знайдено!</p>';
+               } else echo '<p align="center" id="not-search">Нічого не знайдено!</p>';
                 
        }else  echo '<p>Пошукове значення має бути від 3-х до 150-ти символів!</p>';
             ?>

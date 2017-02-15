@@ -74,7 +74,7 @@
             } while ($row = mysql_fetch_array($result));
         }
                             
-        header("Location: cart.php?action=completion");
+        header("Location: http://shop/cart/completion");
     }      
 
     $result = mysql_query("SELECT * FROM cart, table_products WHERE cart.cart_ip = '{$_SERVER['REMOTE_ADDR']}' AND table_products.products_id = cart.cart_id_products", $link);    
@@ -94,15 +94,15 @@
 <html>
 <head>
 	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
-    <link href="css/reset.css" rel="stylesheet" type="text/css" />
-    <link href="css/style.css" rel="stylesheet" type="text/css" />
-    <link href="trackbar/trackbar.css" rel="stylesheet" type="text/css" />
-    <script type="text/javascript" src="/js/jquery-1.8.2.min.js"></script>
-    <script type="text/javascript" src="/js/jcarousellite_1.0.1.js"></script>
-    <script type="text/javascript" src="/js/shop-script.js"></script>
-    <script type="text/javascript" src="/js/jquery.cookie.min.js"></script>
-    <script type="text/javascript" src="/trackbar/jquery.trackbar.js"></script>
-    <script type="text/javascript" src="/js/TextChange.js"></script>
+    <link href="http://shop/css/reset.css" rel="stylesheet" type="text/css" />
+    <link href="http://shop/css/style.css" rel="stylesheet" type="text/css" />
+    <link href="http://shop/trackbar/trackbar.css" rel="stylesheet" type="text/css" />
+    <script type="text/javascript" src="http://shop/js/jquery-1.8.2.min.js"></script>
+    <script type="text/javascript" src="http://shop/js/jcarousellite_1.0.1.js"></script>
+    <script type="text/javascript" src="http://shop/js/shop-script.js"></script>
+    <script type="text/javascript" src="http://shop/js/jquery.cookie.min.js"></script>
+    <script type="text/javascript" src="http://shop/trackbar/jquery.trackbar.js"></script>
+    <script type="text/javascript" src="http://shop/js/TextChange.js"></script>
 	<title>Кошик замовлень</title>
 </head>
 <body>
@@ -147,7 +147,7 @@
                                 </ul>
                             </div>
                             <p>крок 1 з 3</p>
-                            <a href="cart.php?action=clear">Очистити</a>
+                            <a href="http://shop/cart/clear">Очистити</a>
                         </div>
                     ';
                     
@@ -194,11 +194,11 @@
                             '
                                 <div class="block-list-cart">
                                         <div class="img-cart">
-                                            <p align="center"><img src="'.$img_path.'" width= "'.$width.'" height="'.$height.'" /></p>
+                                            <p align="center"><img src="http://shop/'.$img_path.'" width= "'.$width.'" height="'.$height.'" /></p>
                                         </div>
                             
                                     <div class="title-cart">
-                                        <p><a href="view_content.php?id='.$row["products_id"].'">'.$row["title"].'</a></p>
+                                        <p><a href="http://shop/goods/'.$row["products_id"].'-'.ftranslite($row["title"]).'">'.$row["title"].'</a></p>
                                         <p class="cart-mini-features">'.$row["mini_features"].'</p>
                                     </div>
                             
@@ -217,7 +217,7 @@
                                     </div>
                             
                                     <div id="tovar'.$row["cart_id"].'" class="price-product"><h5><span class="span-count">'.$row["cart_count"].'</span> x <span>'.$row["cart_price"].'</span></h5><p price="'.$row["cart_price"].'">'.group_numerals($int).' грн</p></div>
-                                    <div class="delete-cart"><a href="cart.php?id='.$row["cart_id"].'&action=delete"><img src="/images/bsk_item_del.png"/></a></div>
+                                    <div class="delete-cart"><a href="http://shop/cart/'.$row["cart_id"].'-delete"><img src="/images/bsk_item_del.png"/></a></div>
                                     <div id="bottom-cart-line"></div>
                                 </div>
                     
@@ -228,7 +228,7 @@
                         echo
                         '
                             <h2 class="itog-price" align="right">Разом: <strong>'.group_numerals($all_price).'</strong> грн</h2>
-                            <p align="right" class="button-next"><a href="cart.php?action=confirm"> Далі</a></p>   
+                            <p align="right" class="button-next"><a href="http://shop/cart/confirm"> Далі</a></p>   
                         ';
                     
                     }
@@ -251,7 +251,7 @@
                             <div id="name-step">
                                 <ul type="none">
                                     <li>
-                                        <a href="cart.php?action=oneclick">1. Кошик товарів</a>
+                                        <a href="http://shop/cart/oneclick">1. Кошик товарів</a>
                                     </li>
                                     <li>
                                         <span>&rarr;</span>
@@ -332,13 +332,13 @@
                                 <div id="name-step">
                                     <ul type="none">
                                         <li>
-                                            <a href="cart.php?action=oneclick">1. Кошик товарів</a>
+                                            <a href="http://shop/cart/oneclick">1. Кошик товарів</a>
                                         </li>
                                         <li>
                                             <span>&rarr;</span>
                                         </li>
                                         <li>
-                                            <a href="cart.php?action=confirm">2. Контактна інформація</a>
+                                            <a href="http://shop/cart/confirm">2. Контактна інформація</a>
                                         </li>
                                         <li>
                                             <span>&rarr;</span>
@@ -425,7 +425,7 @@
                                 </ul>
                             </div>
                             <p>крок 1 з 3</p>
-                            <a href="cart.php?action=clear">Очистити</a>
+                            <a href="http://shop/cart/clear">Очистити</a>
                         </div>
                     ';
                     
@@ -472,11 +472,11 @@
                             '
                                    <div class="block-list-cart">
                                         <div class="img-cart">
-                                            <p align="center"><img src="'.$img_path.'" width= "'.$width.'" height="'.$height.'" /></p>
+                                            <p align="center"><img src="http://shop'.$img_path.'" width= "'.$width.'" height="'.$height.'" /></p>
                                         </div>
                             
                                     <div class="title-cart">
-                                        <p><a href="">'.$row["title"].'</a></p>
+                                        <p><a href="http://shop/goods/'.$row["products_id"].'-'.ftranslite($row["title"]).'">'.$row["title"].'</a></p>
                                         <p class="cart-mini-features">'.$row["mini_features"].'</p>
                                     </div>
                             
@@ -495,7 +495,7 @@
                                     </div>
                             
                                     <div id="tovar'.$row["cart_id"].'" class="price-product"><h5><span class="span-count">'.$row["cart_count"].'</span> x <span>'.$row["cart_price"].'</span></h5><p price="'.$row["cart_price"].'">'.group_numerals($int).' грн</p></div>
-                                    <div class="delete-cart"><a href="cart.php?id='.$row["cart_id"].'&action=delete"><img src="/images/bsk_item_del.png"/></a></div>
+                                    <div class="delete-cart"><a href="http://shop/cart/'.$row["cart_id"].'-delete"><img src="/images/bsk_item_del.png"/></a></div>
                                     <div id="bottom-cart-line"></div>
                                 </div>
                                        
@@ -506,7 +506,7 @@
                         echo
                         '
                             <h2 class="itog-price" align="right">Разом: <strong>'.group_numerals($all_price).'</strong> грн</h2>
-                            <p align="right" class="button-next"><a href="cart.php?action=confirm"> Далі</a></p>   
+                            <p align="right" class="button-next"><a href="http://shop/cart/confirm"> Далі</a></p>   
                         ';
                     }
                     else

@@ -9,17 +9,17 @@
 <html>
 <head>
 	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
-    <link href="css/reset.css" rel="stylesheet" type="text/css" />
-    <link href="css/style.css" rel="stylesheet" type="text/css" />
-    <link href="trackbar/trackbar.css" rel="stylesheet" type="text/css" />
-    <script type="text/javascript" src="/js/jquery-1.8.2.min.js"></script>
-    <script type="text/javascript" src="/js/jcarousellite_1.0.1.js"></script>
-    <script type="text/javascript" src="/js/shop-script.js"></script>
-    <script type="text/javascript" src="/js/jquery.cookie.min.js"></script>
-    <script type="text/javascript" src="/trackbar/jquery.trackbar.js"></script>
-    <script type="text/javascript" src="/js/jquery.form.js"></script> 
-    <script type="text/javascript" src="/js/jquery.validate.js"></script>
-    <script type="text/javascript" src="/js/TextChange.js"></script>
+    <link href="http://shop/css/reset.css" rel="stylesheet" type="text/css" />
+    <link href="http://shop/css/style.css" rel="stylesheet" type="text/css" />
+    <link href="http://shop/trackbar/trackbar.css" rel="stylesheet" type="text/css" />
+    <script type="text/javascript" src="http://shop/js/jquery-1.8.2.min.js"></script>
+    <script type="text/javascript" src="http://shop/js/jcarousellite_1.0.1.js"></script>
+    <script type="text/javascript" src="http://shop/js/shop-script.js"></script>
+    <script type="text/javascript" src="http://shop/js/jquery.cookie.min.js"></script>
+    <script type="text/javascript" src="http://shop/trackbar/jquery.trackbar.js"></script>
+    <script type="text/javascript" src="http://shop/js/jquery.form.js"></script> 
+    <script type="text/javascript" src="http://shop/js/jquery.validate.js"></script>
+    <script type="text/javascript" src="http://shop/js/TextChange.js"></script>
     <script type="text/javascript">
     $(document).ready(function(){
         $('#form_reg').validate(

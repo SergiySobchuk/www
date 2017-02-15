@@ -2,7 +2,7 @@
     session_start();
     define('myeshop', true);
     include("include/db_connect.php");
-    include("functions/functions.php");
+    include("functions/functions.php");    
     include("include/auth_cookie.php");
 
     //unset($_SESSION['auth']);//завершення сесії
@@ -46,15 +46,15 @@
 <html>
 <head>
 	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
-    <link href="css/reset.css" rel="stylesheet" type="text/css" />
-    <link href="css/style.css" rel="stylesheet" type="text/css" />
-    <link href="trackbar/trackbar.css" rel="stylesheet" type="text/css" />
-    <script type="text/javascript" src="/js/jquery-1.8.2.min.js"></script>
-    <script type="text/javascript" src="/js/jcarousellite_1.0.1.js"></script>
-    <script type="text/javascript" src="/js/shop-script.js"></script>
-    <script type="text/javascript" src="/js/jquery.cookie.min.js"></script>
-    <script type="text/javascript" src="/trackbar/jquery.trackbar.js"></script>
-    <script type="text/javascript" src="/js/TextChange.js"></script>
+    <link href="http://shop/css/reset.css" rel="stylesheet" type="text/css" />
+    <link href="http://shop/css/style.css" rel="stylesheet" type="text/css" />
+    <link href="http://shop/trackbar/trackbar.css" rel="stylesheet" type="text/css" />
+    <script type="text/javascript" src="http://shop/js/jquery-1.8.2.min.js"></script>
+    <script type="text/javascript" src="http://shop/js/jcarousellite_1.0.1.js"></script>
+    <script type="text/javascript" src="http://shop/js/shop-script.js"></script>
+    <script type="text/javascript" src="http://shop/js/jquery.cookie.min.js"></script>
+    <script type="text/javascript" src="http://shop/trackbar/jquery.trackbar.js"></script>
+    <script type="text/javascript" src="http://shop/js/TextChange.js"></script>
 	<title>Інтернет-Магазин Цифрової Техніки</title>
 </head>
 <body>
@@ -71,7 +71,7 @@
         </div>
         <div id="block-content">
             <div id="block-sorting">
-                <p id="nav-breadcrumbs"><a href="">Головна сторінка</a>\<span>Всі товари</span></p>
+                <p id="nav-breadcrumbs"><a>Головна сторінка</a>\<span>Всі товари</span></p>
                 <ul type="none" id="option-list">
                     <li>Вид:</li>
                     <li><img id="style-grid" src="/images/icon-grid.png" /></li>
@@ -79,11 +79,11 @@
                     <li>Сортувати:</li>
                     <li><a id="select-sort"><?php echo $sort_name; ?></a>
                         <ul type="none" id="sorting-list">
-                            <li><a href="index.php?sort=price-asc">Від дешевих до дорогих</a></li>
-                            <li><a href="index.php?sort=price-desc">Від дорогих до дешевих</a></li>
-                            <li><a href="index.php?sort=price-popular">Популярні</a></li>
-                            <li><a href="index.php?sort=price-news">Новинки</a></li>
-                            <li><a href="index.php?sort=price-brand">Від А до Я</a></li>                       
+                            <li><a href="http://shop/index/price-asc">Від дешевих до дорогих</a></li>
+                            <li><a href="http://shop/index/price-desc">Від дорогих до дешевих</a></li>
+                            <li><a href="http://shop/index/price-popular">Популярні</a></li>
+                            <li><a href="http://shop/index/price-news">Новинки</a></li>
+                            <li><a href="http://shop/index/price-brand">Від А до Я</a></li>                       
                         </ul>
                     </li>
                 </ul>
@@ -146,9 +146,9 @@
                         echo'
                                 <li>
                                     <div class="block-images-grid">
-                                        <img src="'.$img_path.'" width="'.$width.'" height = ".$height." />
+                                        <img src="http://shop/'.$img_path.'" width="'.$width.'" height = ".$height." />
                                     </div>
-                                    <p class="style-title-grid"><a href="view_content.php?id='.$row["products_id"].'">'.$row["title"].'</a></p>
+                                    <p class="style-title-grid"><a href="http://shop/goods/'.$row["products_id"].'-'.ftranslite($row["title"]).'">'.$row["title"].'</a></p>
                                     <ul class="reviews-and-counts-grid" type="none">
                                         <li>
                                             <img src="/images/eye-icon.png"/>
@@ -209,7 +209,7 @@
                         echo'
                                 <li>
                                     <div class="block-images-list">
-                                        <img src="'.$img_path.'" width="'.$width.'" height = ".$height." />
+                                        <img src="http://shop'.$img_path.'" width="'.$width.'" height = ".$height." />
                                     </div>
                                     
                                     <ul class="reviews-and-counts-list" type="none">
@@ -222,7 +222,7 @@
                                             <p>'.$count_reviews.'</p>
                                         </li>
                                     </ul>
-                                    <p class="style-title-list"><a href="view_content.php?id='.$row["products_id"].'">'.$row["title"].'</a></p>
+                                    <p class="style-title-list"><a href="http://shop/goods/'.$row["products_id"].'-'.ftranslite($row["title"]).'">'.$row["title"].'</a></p>
                                     <a class="add-cart-style-list" tid = "'.$row["products_id"].'"></a>
                                     <p class="style-price-list"><strong>'.group_numerals($row["price"]).'</strong> грн.</p>
                                     <div class="style-text-list">
@@ -235,24 +235,24 @@
                 }
 echo '</ul>';
                 
-                if ($page != 1) $pstr_prev = '<li><a class="pstr-prev" href="index.php?page='.($page-1).'">&lt;</a></li>';
-                if ($page != $total) $pstr_next = '<li><a class="pstr-next" href="index.php?page='.($page+1).'">&gt;</a></li>';
+                if ($page != 1) $pstr_prev = '<li><a class="pstr-prev" href="http://shop/index/'.($page-1).'">&lt;</a></li>';
+                if ($page != $total) $pstr_next = '<li><a class="pstr-next" href="http://shop/index/'.($page+1).'">&gt;</a></li>';
                 
-                if($page - 5 > 0)$page5left = '<li><a href="index.php?page='.($page-5).'">'.($page-5).'</a></li>';
-                if($page - 4 > 0)$page4left = '<li><a href="index.php?page='.($page-4).'">'.($page-4).'</a></li>';
-                if($page - 3 > 0)$page3left = '<li><a href="index.php?page='.($page-3).'">'.($page-3).'</a></li>';
-                if($page - 2 > 0)$page2left = '<li><a href="index.php?page='.($page-2).'">'.($page-2).'</a></li>';
-                if($page - 1 > 0)$page1left = '<li><a href="index.php?page='.($page-1).'">'.($page-1).'</a></li>';
+                if($page - 5 > 0)$page5left = '<li><a href="http://shop/index/'.($page-5).'">'.($page-5).'</a></li>';
+                if($page - 4 > 0)$page4left = '<li><a href="http://shop/index/'.($page-4).'">'.($page-4).'</a></li>';
+                if($page - 3 > 0)$page3left = '<li><a href="http://shop/index/'.($page-3).'">'.($page-3).'</a></li>';
+                if($page - 2 > 0)$page2left = '<li><a href="http://shop/index/'.($page-2).'">'.($page-2).'</a></li>';
+                if($page - 1 > 0)$page1left = '<li><a href="http://shop/index/'.($page-1).'">'.($page-1).'</a></li>';
                 
-                if($page + 5 <= $total) $page5right = '<li><a href="index.php?page='.($page+5).'">'.($page+5).'</a></li>';
-                if($page + 4 <= $total) $page4right = '<li><a href="index.php?page='.($page+4).'">'.($page+4).'</a></li>';
-                if($page + 3 <= $total) $page3right = '<li><a href="index.php?page='.($page+3).'">'.($page+3).'</a></li>';
-                if($page + 2 <= $total) $page2right = '<li><a href="index.php?page='.($page+2).'">'.($page+2).'</a></li>';
-                if($page + 1 <= $total) $page1right = '<li><a href="index.php?page='.($page+1).'">'.($page+1).'</a></li>';
+                if($page + 5 <= $total) $page5right = '<li><a href="http://shop/index/'.($page+5).'">'.($page+5).'</a></li>';
+                if($page + 4 <= $total) $page4right = '<li><a href="http://shop/index/'.($page+4).'">'.($page+4).'</a></li>';
+                if($page + 3 <= $total) $page3right = '<li><a href="http://shop/index/'.($page+3).'">'.($page+3).'</a></li>';
+                if($page + 2 <= $total) $page2right = '<li><a href="http://shop/index/'.($page+2).'">'.($page+2).'</a></li>';
+                if($page + 1 <= $total) $page1right = '<li><a href="http://shop/index/'.($page+1).'">'.($page+1).'</a></li>';
                 
                 if($page+5 < $total)
                 {
-                    $strtotal = '<li><p class="nav-point">...</p></li><li><a href="index.php?page='.$total.'">'.$total.'</a></li>';
+                    $strtotal = '<li><p class="nav-point">...</p></li><li><a href="http://shop/index/'.$total.'">'.$total.'</a></li>';
                 }
                 else
                 {
@@ -266,7 +266,7 @@ echo '</ul>';
                         <div class="pstrnav">
                             <ul type="none">
                     ';       
-                    echo $pstr_prev.$page5left.$page4left.$page3left.$page2left.$page1left."<li><a class='pstr-active' href='index.php?page=".$page."'>".$page."</a></li>".$page1right.$page2right.$page3right.$page4right.$page5right.$strtotal.$pstr_next;
+                    echo $pstr_prev.$page5left.$page4left.$page3left.$page2left.$page1left."<li><a class='pstr-active' href='http://shop/index/".$page."'>".$page."</a></li>".$page1right.$page2right.$page3right.$page4right.$page5right.$strtotal.$pstr_next;
                     echo
                     '
                             </ul>

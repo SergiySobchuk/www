@@ -1,0 +1,24 @@
+RewriteEngine On
+Options +FollowSymlinks
+RewriteCond   %{REQUEST_FILENAME} !-d
+RewriteCond   %{REQUEST_FILENAME} !-f
+
+ErrorDocument 404 http://shop/not_found.php
+
+RewriteRule ^index/$ index.php [QSA,L]
+RewriteRule ^feedback/$ feedback.php [QSA,L]
+RewriteRule ^registration/$ registration.php [QSA,L]
+RewriteRule ^goods/([0-9]+)-([a-z0-9\-]+)/?$ view_content.php?id=$1 [L]
+RewriteRule ^index/([a-z]+)/?$ view_aystopper.php?go=$1 [L]
+RewriteRule ^index/([a-z]+)-([0-9]+)/?$ view_aystopper.php?go=$1&page=$2 [L]
+RewriteRule ^index/([0-9]+)/?$ index.php?page=$1 [L]
+RewriteRule ^index/([a-z\-]+)/?$ index.php?sort=$1 [L]
+RewriteRule ^profile/$ profile.php [QSA,L]
+RewriteRule ^cart/([a-z]+)/?$ cart.php?action=$1 [L]
+RewriteRule ^cart/([0-9]+)-([a-z]+)/?$ cart.php?id=$1&action=$2 [L]
+RewriteRule ^cat/([0-9]+)/?$ view_cat.php?page=$1 [L]
+RewriteRule ^cat/([a-z]+)/?$ view_cat.php?type=$1 [L]
+RewriteRule ^cat/([a-z]+)--([a-z]+)/?$ view_cat.php?cat=$1&type=$2 [L]
+RewriteRule ^cat/([a-z]+)-([a-z]+)-([a-z]+)/?$ view_cat.php?cat=$1&type=$2&sort=$3 [L]
+RewriteRule ^cat/([a-z]+)-([a-z]+)/?$ view_cat.php?type=$1&sort=$2 [L]
+RewriteRule ^search_filter/$ search_filter.php [QSA,L]
